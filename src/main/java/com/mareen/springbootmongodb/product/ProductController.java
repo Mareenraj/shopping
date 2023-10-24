@@ -11,26 +11,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
-
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody Product product) {
-        return ResponseEntity.ok(productService.save(product));
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        Product newProduct = productService.addProduct(product);
+        return ResponseEntity.ok(newProduct);
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
-        return ResponseEntity.ok(productService.findAll());
-
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        return ResponseEntity.ok(products);
     }
 
-//    @GetMapping("/{product-id}")
-//    public ResponseEntity<Product> findById(@PathVariable("product-id") String productId) {
-//        return ResponseEntity.ok(productService.findById(productId));
-//    }
-//
-//    @DeleteMapping("/{product-id}")
-//    public ResponseEntity<Void> delete(@PathVariable("product-id") String productId) {
-//        productService.delete(productId);
-//        return ResponseEntity.accepted().build();
-//    }
+    @GetMapping(params = "category")
+    public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam String category) {
+        List<Product> products = productService.getProductsByCategory(category);
+        return ResponseEntity.ok(products);
+    }
 }

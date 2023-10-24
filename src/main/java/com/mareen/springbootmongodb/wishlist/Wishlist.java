@@ -18,4 +18,5 @@ public class Wishlist {
     private String productName;
     private String productDescription;
     private double productPrice;
+    private String productImageURL;
 }

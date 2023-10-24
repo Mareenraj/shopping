@@ -1,6 +1,5 @@
 package com.mareen.springbootmongodb.wishlist;
 
-import com.mareen.springbootmongodb.users.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +12,16 @@ import java.util.List;
 public class WishlistController {
     private final WishlistService wishlistService;
 
-    @PostMapping
-    public ResponseEntity<String> save(@RequestBody Wishlist wishlist) {
-        return ResponseEntity.ok(wishlistService.save(wishlist));
+    @PostMapping("/products/{productId}")
+    public ResponseEntity<Wishlist> addToWishlist(@PathVariable String productId, @RequestBody Wishlist wishlist) {
+        wishlist.setProductId(productId);
+        Wishlist newWishlistItem = wishlistService.addToWishlist(wishlist);
+        return ResponseEntity.ok(newWishlistItem);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Wishlist>> findAll() {
-        return ResponseEntity.ok(wishlistService.findAll());
-
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<List<Wishlist>> getWishlistByUser(@PathVariable String userId) {
+        List<Wishlist> wishlist = wishlistService.getWishlistByUserId(userId);
+        return ResponseEntity.ok(wishlist);
     }
 }

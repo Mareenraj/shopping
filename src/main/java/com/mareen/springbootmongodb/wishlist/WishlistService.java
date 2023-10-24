@@ -1,6 +1,5 @@
 package com.mareen.springbootmongodb.wishlist;
 
-import com.mareen.springbootmongodb.users.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +10,11 @@ import java.util.List;
 public class WishlistService {
     private final WishlistRepository wishlistRepository;
 
-    public String save(Wishlist wishlist) {
-        return wishlistRepository.save(wishlist).getId();
+    public Wishlist addToWishlist(Wishlist wishlist) {
+        return wishlistRepository.save(wishlist);
     }
 
-    public List<Wishlist> findAll() {
-        return wishlistRepository.findAll();
+    public List<Wishlist> getWishlistByUserId(String userId) {
+        return wishlistRepository.findByUserId(userId);
     }
 }

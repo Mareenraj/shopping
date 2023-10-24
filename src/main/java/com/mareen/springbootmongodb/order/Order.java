@@ -1,4 +1,4 @@
-package com.mareen.springbootmongodb.users;
+package com.mareen.springbootmongodb.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,9 +10,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @Builder
-public class Users {
+public class Order {
     @Id
     private String id;
-    private String name;
-    private int age;
+    private String productId;
+    private String userId;
+    private int quantity;
+    private double totalAmount;
 }

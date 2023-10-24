@@ -1,11 +1,7 @@
 package com.mareen.springbootmongodb;
 
-import com.mareen.springbootmongodb.offers.Offers;
-import com.mareen.springbootmongodb.offers.OffersRepository;
-import com.mareen.springbootmongodb.users.Users;
-import com.mareen.springbootmongodb.users.UsersRepository;
-import com.mareen.springbootmongodb.wishlist.Wishlist;
-import com.mareen.springbootmongodb.wishlist.WishlistRepository;
+import com.mareen.springbootmongodb.offer.Offer;
+import com.mareen.springbootmongodb.offer.OfferRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,16 +16,16 @@ public class SpringbootMongodbApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(
-          OffersRepository offersRepository
+            OfferRepository offerRepository
     ) {
         return args -> {
-            var offers = Offers.builder()
+            var offers = Offer.builder()
                     .id("fknwjevj")
                     .productId("vnjrv")
                     .userId("mareen")
                     .offerAmount(4.89)
                     .build();
-            offersRepository.insert(offers);
+            offerRepository.insert(offers);
 
         };
     }
