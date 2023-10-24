@@ -14,7 +14,7 @@ public class SpringbootMongodbApplication {
         SpringApplication.run(SpringbootMongodbApplication.class, args);
     }
 
-    @Bean
+
     public CommandLineRunner commandLineRunner(
             OfferRepository offerRepository
     ) {
