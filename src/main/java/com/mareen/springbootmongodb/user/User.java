@@ -1,4 +1,4 @@
-package com.mareen.springbootmongodb.offers;
+package com.mareen.springbootmongodb.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,12 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @Builder
-public class Offers {
+public class User {
     @Id
     private String id;
-    private String productId;
-    private String userId;
-    private double offerAmount;
-
+    private String username;
+    private String email;
 }
-
