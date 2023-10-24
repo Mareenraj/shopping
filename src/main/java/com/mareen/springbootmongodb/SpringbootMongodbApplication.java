@@ -2,6 +2,8 @@ package com.mareen.springbootmongodb;
 
 import com.mareen.springbootmongodb.users.Users;
 import com.mareen.springbootmongodb.users.UsersRepository;
+import com.mareen.springbootmongodb.wishlist.Wishlist;
+import com.mareen.springbootmongodb.wishlist.WishlistRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,14 +18,15 @@ public class SpringbootMongodbApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(
-           UsersRepository usersRepository
+           WishlistRepository wishlistRepository
     ) {
         return args -> {
-            var users = Users.builder()
-                    .name("mareen")
-                    .age(24)
+            var wishlist = Wishlist.builder()
+                    .userId("mareen")
+                    .productName("fknveqfj")
+                    .productId("fjcnqeij")
                     .build();
-            usersRepository.insert(users);
+            wishlistRepository.insert(wishlist);
 
         };
     }

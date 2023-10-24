@@ -1,4 +1,4 @@
-package com.mareen.springbootmongodb.product;
+package com.mareen.springbootmongodb.wishlist;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,10 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @Builder
-public class Product {
+public class Wishlist {
     @Id
     private String id;
-    private String name;
-    private String description;
-    private double price;
+    private String userId;
+    private String productId;
+    private String productName;
+    private String productDescription;
+    private double productPrice;
 }
