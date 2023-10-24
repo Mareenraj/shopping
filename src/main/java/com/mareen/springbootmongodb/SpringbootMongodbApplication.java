@@ -1,5 +1,7 @@
 package com.mareen.springbootmongodb;
 
+import com.mareen.springbootmongodb.offers.Offers;
+import com.mareen.springbootmongodb.offers.OffersRepository;
 import com.mareen.springbootmongodb.users.Users;
 import com.mareen.springbootmongodb.users.UsersRepository;
 import com.mareen.springbootmongodb.wishlist.Wishlist;
@@ -18,15 +20,16 @@ public class SpringbootMongodbApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(
-           WishlistRepository wishlistRepository
+          OffersRepository offersRepository
     ) {
         return args -> {
-            var wishlist = Wishlist.builder()
+            var offers = Offers.builder()
+                    .id("fknwjevj")
+                    .productId("vnjrv")
                     .userId("mareen")
-                    .productName("fknveqfj")
-                    .productId("fjcnqeij")
+                    .offerAmount(4.89)
                     .build();
-            wishlistRepository.insert(wishlist);
+            offersRepository.insert(offers);
 
         };
     }
